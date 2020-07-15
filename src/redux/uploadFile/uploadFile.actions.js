@@ -16,11 +16,6 @@ export const setUploadProgress = (id, progress) => ({
   },
 });
 
-export const addFile = (file) => ({
-  type: uploadFileTypes.ADD_FILE,
-  payload: file,
-});
-
 export const successUploadFile = (id) => ({
   type: uploadFileTypes.SUCCESS_UPLOAD_FILE,
   payload: id,
@@ -58,7 +53,6 @@ export const uploadFile = (files) => (dispatch) => {
           dispatch(setUploadProgress(file.id, percentageProgress));
         },
       })
-        .then(() => dispatch(addFile(file)))
         .then(() => dispatch(successUploadFile(file.id)))
         .catch(() => dispatch(failureUploadFile(file.id)));
     });

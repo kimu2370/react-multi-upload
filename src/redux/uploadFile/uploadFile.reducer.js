@@ -1,4 +1,4 @@
-import produce from 'immer';
+// import produce from 'immer';
 import uploadFileTypes from './uploadFile.types';
 import { modifyFiles } from './uploadFile.utils';
 
@@ -11,7 +11,6 @@ import { modifyFiles } from './uploadFile.utils';
  */
 
 const INITIAL_STATE = {
-  fileList: [],
   fileProgress: {
     // 1: {
     //   id: 1,
@@ -43,15 +42,6 @@ const fileProgressReducer = (state = INITIAL_STATE, action) => {
           },
         },
       };
-
-    case uploadFileTypes.ADD_FILE:
-      return produce(state, (draft) => {
-        draft.fileList.push(state.fileProgress[action.payload.id]);
-        draft.fileProgress = {
-          ...state.fileProgress,
-          ...modifyFiles(state.fileProgress, action.payload),
-        };
-      });
 
     case uploadFileTypes.SUCCESS_UPLOAD_FILE:
       return {

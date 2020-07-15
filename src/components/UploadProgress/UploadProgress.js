@@ -33,7 +33,6 @@ const UploadProgress = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     fileProgress: state.UploadFile.fileProgress,
   };
