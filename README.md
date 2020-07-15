@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ProgressBar를 이용한 다중 파일 업로드 하기
 
-## Available Scripts
+#### 사용할 기술
 
-In the project directory, you can run:
+- ReactJS : 프론트엔드 앱 라이브러리
+- Redux : 전역 상태 관리 라이브러리
+- Redux-thunk : 리덕스에서 비동기 로직을 처리하기 위한 라이브러리
+- Axios : 클라이언트 & 서버를 위한 프로미스 기반의 http 요청 라이브러리
+- Lodash : 자바스크립트 함수 유틸 라이브러리
+- Express : NodeJS 서버 API
+- Multer : multipart/form-data 핸들링을 위한 Node.js 미들웨어
 
-### `npm start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 프로젝트 폴더 만들기
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+$ mkdir file-upload-example
+$ cd file-upload-example
+$ mkdir server
+```
 
-### `npm test`
+### 서버 세팅하기
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ cd server
+$ touch server.js
+$ npm init -y
+$ npm i express multer cors
+```
 
-### `npm run build`
+> **Multer**에 대한 자세한 설명은
+> https://github.com/expressjs/multer/blob/master/doc/README-ko.md
+> 를 참고하자.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 프론트 단 세팅하기
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+$ npx create-react-app client
+$ cd client
+$ npm i redux react-redux redux-thunk axios lodash
+$ npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### App.js 세팅
 
-### `npm run eject`
+```
+client/src/App.js
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### redux item
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-> 파일을 첨부 할 때마다 파일이 특정 데이터 구조로 redux 저장소에 저장된다.
