@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { setUploadFile } from '../redux/uploadFile/uploadFile.actions';
-import UploadProgress from '../components/UploadProgress/UploadProgress';
 import logo from '../logo.svg';
 import '../App.css';
 
@@ -39,7 +38,6 @@ function App(props) {
         <img src={logo} className="App-logo" alt="logo" />
         <input type="file" multiple onChange={handleAttachFile} />
       </header>
-      <UploadProgress />
     </div>
   );
 }

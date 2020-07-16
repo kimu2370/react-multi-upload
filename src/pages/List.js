@@ -1,7 +1,6 @@
 import React from 'react';
 import { toArray } from 'lodash';
 import { connect } from 'react-redux';
-import UploadProgress from '../components/UploadProgress/UploadProgress';
 
 const List = (props) => {
   const handleClick = () => {
@@ -18,7 +17,6 @@ const List = (props) => {
           <span style={{ color: 'red' }}>{`${item.progress}%`}</span>
         </div>
       ))}
-      <UploadProgress style={{ textAlign: 'center' }} />
     </>
   );
 };
